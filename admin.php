@@ -14,13 +14,13 @@ if(!isset($_SESSION['admin'])){
     header('Location: login.php');
 }
 
-//check for get parameters and double check, else redirect to login page
-else if(isset($_GET['key'])){
+//if admin is logged in
+else if(isset($_SESSION['admin'])){
     //get user's info from database
     $query = "SELECT * FROM admin WHERE id = :id AND password = :password";
     $query_params = array(
-        ':id' => $_GET['id'],
-        ':password' => $_GET['key']);
+        ':id' => $_SESSION['admin']['id'],
+        ':password' => $_SESSION['admin']['key']);
     try {
         $stmt   = $db->prepare($query);
         $result = $stmt->execute($query_params);

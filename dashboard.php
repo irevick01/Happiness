@@ -82,6 +82,8 @@
 
 
 <?php
+//use lagos as default time zone for this script
+date_default_timezone_set("Africa/Lagos");
 
 //method for getting time difference
  function time_diff($time){

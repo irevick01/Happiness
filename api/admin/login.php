@@ -36,13 +36,10 @@ if (!empty($_POST)) {
         if( !isset( $_SESSION['admin'] ) ){
             $_SESSION['admin'] = array();
         }
-        //pass student details to session array
-        $student['id'] = $row['id'];
-        $student['first_name'] = $row['first_name'];
-        $student['last_name'] = $row['last_name'];
-        $student['email'] = $row['email'];
-        $student['key'] = $row['password'];
-        header('Location: ../../admin.php?id='.$row['id'].'&key='.$row['password']);
+        //pass admin details to session array
+        $_SESSION['admin']['id'] = $row['id'];
+        $_SESSION['admin']['key'] = $row['password'];
+        header('Location: ../../admin.php');
     }
     else{
         $response["success"] = 0;
