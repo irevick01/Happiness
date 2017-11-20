@@ -32,13 +32,13 @@ if (!empty($_GET && $_GET['token'] == BOT_TOKEN)) {
         //prepare chat - user reply
         $chat['party'] = 'user';
         $chat['chat'] = "Yes, please";
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //prepare chat - bot reply
         $chat['party'] = 'bot';
-        $chat['chat'] = "Aww.. It's awesome to see you want to know more about today.\n\nToday's date is ".date("F j, Y")."\n\nWould you also like to know the Governors of the states in Nigeria?";
-        $chat['time'] = date("F j, Y");
+        $chat['chat'] = "Aww.. It's awesome to see you want to know more about today.\n\nToday's date is ".date("F j, Y").".\n\nWould you also like to know the Governors of the states in Nigeria?";
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //update conversation in database
@@ -46,7 +46,7 @@ if (!empty($_GET && $_GET['token'] == BOT_TOKEN)) {
         $query_params = array(
             ':id' => $row['id'],
             ':conversation' => json_encode($conversation),
-            ':updated_at' => date("F j, Y"));
+            ':updated_at' => date("F j, Y, g:i a"));
         $stmt   = $db->prepare($query);
         $result = $stmt->execute($query_params);
 
@@ -81,13 +81,13 @@ if (!empty($_GET && $_GET['token'] == BOT_TOKEN)) {
         //prepare chat - user reply
         $chat['party'] = 'user';
         $chat['chat'] = "No, thanks";
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //prepare chat - bot reply
         $chat['party'] = 'bot';
         $chat['chat'] = "Aww.. that's okay.\n\nWould you like to know the Governors of the states in Nigeria?";
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //update conversation in database
@@ -95,7 +95,7 @@ if (!empty($_GET && $_GET['token'] == BOT_TOKEN)) {
         $query_params = array(
             ':id' => $row['id'],
             ':conversation' => json_encode($conversation),
-            ':updated_at' => date("F j, Y"));
+            ':updated_at' => date("F j, Y, g:i a"));
         $stmt   = $db->prepare($query);
         $result = $stmt->execute($query_params);
 

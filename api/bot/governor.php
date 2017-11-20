@@ -49,37 +49,37 @@ if (!empty($_GET && $_GET['token'] == BOT_TOKEN)) {
         //prepare chat - user reply
         $chat['party'] = 'user';
         $chat['chat'] = "I'd love to know";
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //prepare chat - bot reply
         $chat['party'] = 'bot';
         $chat['chat'] = "Oh, cool! Now I'm blushing..";
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //prepare chat - bot reply
         $chat['party'] = 'bot';
         $chat['chat'] = "Please enter any state in Nigeria and I'd gladly tell you who the Governor is:";
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //prepare chat - user reply
         $chat['party'] = 'user';
         $chat['chat'] = $_GET['state'];
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //prepare chat - bot reply
         $chat['party'] = 'bot';
         $chat['chat'] = $bot_reply1;
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //prepare chat - bot reply
         $chat['party'] = 'bot';
         $chat['chat'] = $bot_reply2;
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //update conversation in database
@@ -87,7 +87,7 @@ if (!empty($_GET && $_GET['token'] == BOT_TOKEN)) {
         $query_params = array(
             ':id' => $row['id'],
             ':conversation' => json_encode($conversation),
-            ':updated_at' => date("F j, Y"));
+            ':updated_at' => date("F j, Y, g:i a"));
         $stmt   = $db->prepare($query);
         $result = $stmt->execute($query_params);
 
@@ -110,13 +110,13 @@ if (!empty($_GET && $_GET['token'] == BOT_TOKEN)) {
         //prepare chat - user reply
         $chat['party'] = 'user';
         $chat['chat'] = "No, maybe later";
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //prepare chat - bot reply
         $chat['party'] = 'bot';
         $chat['chat'] = $bot_reply;
-        $chat['time'] = date("F j, Y");
+        $chat['time'] = date("F j, Y, g:i a");
         array_push($conversation, $chat);
 
         //update conversation in database
@@ -124,7 +124,7 @@ if (!empty($_GET && $_GET['token'] == BOT_TOKEN)) {
         $query_params = array(
             ':id' => $row['id'],
             ':conversation' => json_encode($conversation),
-            ':updated_at' => date("F j, Y"));
+            ':updated_at' => date("F j, Y, g:i a"));
         $stmt   = $db->prepare($query);
         $result = $stmt->execute($query_params);
 

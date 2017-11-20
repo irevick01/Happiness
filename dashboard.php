@@ -28,7 +28,7 @@
 
     <div class="w3-bar w3-black">
         <?php foreach($customers as $index => $customer): ?>
-            <button class="w3-bar-item w3-button" onclick="openCity('<?php echo $customer['id']; ?>')"><?php echo $customer['first_name']; ?></button>
+            <button class="w3-bar-item w3-button" onclick="showConversations('<?php echo $customer['id']; ?>')"><?php echo $customer['first_name']; ?></button>
         <?php endforeach; ?>
     </div>
 
@@ -67,14 +67,20 @@
 <br><br>
 
 <script>
-    function openCity(cityName) {
+    function showConversations(customerId) {
         var i;
         var x = document.getElementsByClassName("customer");
         for (i = 0; i < x.length; i++) {
             x[i].style.display = "none";
         }
-        document.getElementById(cityName).style.display = "block";
+        document.getElementById(customerId).style.display = "block";
     }
+
+    <?php if(sizeof($customers) > 0): ?>
+        showConversations(<?php echo $customers[0]['id']; ?>);
+    <?php endif ?>
+
+
 </script>
 
 </body>

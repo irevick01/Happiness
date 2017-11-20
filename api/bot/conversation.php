@@ -42,7 +42,7 @@ if (!empty($_POST)) {
                 //prepare chat
                 $chat['party'] = 'bot';
                 $chat['chat'] = "Hello ".$_POST['first_name'].",\n\nIt's nice to have you here. My name is Happiness.\n\nThe day looks pretty amazing! Would you like to know what the day is?";
-                $chat['time'] = date("F j, Y");
+                $chat['time'] = date("F j, Y, g:i a");
                 array_push($conversation, $chat);
 
                 //update conversation in database
@@ -50,7 +50,7 @@ if (!empty($_POST)) {
                 $query_params = array(
                     ':id' => $row['id'],
                     ':conversation' => json_encode($conversation),
-                    ':updated_at' => date("F j, Y"));
+                    ':updated_at' => date("F j, Y, g:i a"));
                 try {
                     $stmt   = $db->prepare($query);
                     $result = $stmt->execute($query_params);
@@ -94,7 +94,7 @@ if (!empty($_POST)) {
                 //prepare chat
                 $chat['party'] = 'bot';
                 $chat['chat'] = "Hello ".$_POST['first_name'].",\n\nIt's nice to have you here. My name is Happiness.\n\nThe day looks pretty amazing! Would you like to know what the day is?";
-                $chat['time'] = date("F j, Y");
+                $chat['time'] = date("F j, Y, g:i a");
                 array_push($conversation, $chat);
 
                 $query = "INSERT INTO customers ( chatfuel_user_id, first_name, last_name, conversation, created_at )
@@ -106,7 +106,7 @@ if (!empty($_POST)) {
                     ':first_name' => $first_name,
                     ':last_name' => $last_name,
                     ':conversation' => json_encode($conversation),
-                    ':created_at' => date("F j, Y") );
+                    ':created_at' => date("F j, Y, g:i a") );
 
                 //Run query, and create the user
                 try {
